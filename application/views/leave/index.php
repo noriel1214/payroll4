@@ -50,32 +50,42 @@
 
         <?php echo validation_errors(); ?>
             
-            <?php echo form_open('application/create'); ?>
+            <?php echo form_open('leave/create'); ?>
                       
                     <div class="form-horizontal form-label-left">
 
                         
-                        <input id="application_id" name="application_id" type="hidden" >
+                        <input id="application_id" name="leave_id" type="hidden" >
                                
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Applicant Name</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input id="applicant_name" name="applicant_name" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
- oninput="setCustomValidity('')"  >
-                        </div>
-                      </div>
+
                         
-     
-                        
-                        
-                                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Application Date</label>
+                                         <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Start Date</label>
                         
                                         <div class='col-sm-4'>
                    
                     <div class="form-group">
-                        <div class='input-group date ' id='myDatepicker2'>
-                            <input id="application_date" name="application_date" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+                        <div class='input-group date myDatepicker2' id='myDatepicker2'>
+                            <input id="leave_start_date" name="leave_start_date" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')"  />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                                </div> 
+                        
+                        </div>   
+                        
+                        
+                                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">End Date</label>
+                        
+                                        <div class='col-sm-4'>
+                   
+                    <div class="form-group">
+                        <div class='input-group date myDatepicker2' id='myDatepicker2'>
+                            <input id="leave_end_date" name="leave_end_date" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
  oninput="setCustomValidity('')"  />
                             <span class="input-group-addon">
                                <span class="glyphicon glyphicon-calendar"></span>
@@ -87,7 +97,13 @@
                         </div>  
                         
      
-    
+                          <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Reason</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="leave_reason" name="leave_reason" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')"  >
+                        </div>
+                      </div>
      
                         
      
@@ -134,90 +150,49 @@
                             <th>
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
-                            <th class="column-title">Employee Id </th>
-                            <th class="column-title">Employee </th>
+                            <th class="column-title"># </th>
+                           
                             <th class="column-title">Start Date </th>
                             <th class="column-title">End Date </th>
                             <th class="column-title">Reason </th>
                             <th class="column-title">Status </th>
-                            <th class="column-title no-link last"><span class="nobr">Option</span>
+                            <th class="column-title no-link last"><span class="nobr">Action</span>
                             </th>
-                            <th class="bulk-actions" colspan="7">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Option ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                            </th>
+
                           </tr>
                         </thead>
 
                         <tbody>
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000040</td>
-                            <td class=" ">May 23, 2014 11:47:56 PM </td>
-                            <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
+                            <?php foreach ($leave as $leave_item): ?>
+                        <tr>
+                        <td><?php echo $leave_item['leave_id']; ?></td>
+                        <td><?php echo $leave_item['leave_start_date ']; ?></td>
+                        <td><?php echo $leave_item['leave_end_date']; ?></td>   
+                        <td><?php echo $leave_item['leave_reason ']; ?></td>   
+                        <td><?php echo $leave_item['leave_status_id  ']; ?></td> 
+                        <td>
+                                <div role="presentation" class="dropdown form-group-sm">
+                      <a  class="dropdown-toggle btn-primary form-control" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                  Action
+                                  <span class="caret"></span>
+                              </a>
+                      <ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
 
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000040</td>
-                            <td class=" ">May 24, 2014 11:47:56 PM </td>
-                            <td class=" ">121000210</td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000039</td>
-                            <td class=" ">May 26, 2014 11:30:12 PM</td>
-                            <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
-                            </td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
+                        <li role="presentation"><a class="edit-leave-modal" role="menuitem" tabindex="-1" data-toggle="modal" data-target=".pr-leave-modal" 
+                                                   
+                                                   data-vacancy-id="<?php echo $leave_item['leave_id']; ?>">Approve</a>
+                        </li>
+                        
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a>
+                        </li>
 
-
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000040</td>
-                            <td class=" ">May 27, 2014 11:47:56 PM </td>
-                            <td class=" ">121000210</td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000039</td>
-                            <td class=" ">May 28, 2014 11:30:12 PM</td>
-                            <td class=" ">121000208</td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
+                      </ul>
+                    </div>                
+                            
+                            
+                        </td>
+                        </tr> 
+                        <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>

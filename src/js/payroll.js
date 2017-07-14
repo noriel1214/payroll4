@@ -28,15 +28,24 @@ $(document).on("click", ".edit-application-modal", function () {
 });
 
 
-    
+
+
     $('#myDatepicker2').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });  
+        
+
+    $('.myDatepicker2').datetimepicker({
         format: 'YYYY-MM-DD'
     });
     
+  
+    
+
  
     $('#apply_last_date').click(function(event){
        
-   
+   $('#myDatepicker3').datetimepicker();
     $('#myDatepicker2').datetimepicker();
 });
     

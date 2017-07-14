@@ -8,7 +8,7 @@ class Leave_model extends CI_Model {
         
         public function get_leave($leave_id = 0)
 {
-        if ($leave_id === FALSE)
+        if ($leave_id === 0)
         {
                 $query = $this->db->get('pr_leave');
                 return $query->result_array();
