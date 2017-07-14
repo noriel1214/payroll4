@@ -5,32 +5,20 @@ class Leave extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('leave_model');
+           
                 $this->load->helper('url_helper');
         }
 
 public function index()
 {
-        //$data['employee'] = $this->news_model->get_news();
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+    
+        $data['leave'] = $this->leave_model->get_leave();
         $data['title'] = 'Add Leave';
 
         $this->load->view('templates/header', $data);
         $this->load->view('leave/index', $data);
-        $this->load->view('templates/footer');
-}
-        
-        public function view($slug = NULL)
-{
-        $data['leave_item'] = $this->news_model->get_news($slug);
-
-        if (empty($data['leave_item']))
-        {
-                show_404();
-        }
-
-        $data['title'] = $data['leave_item']['title'];
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('leave/view', $data);
         $this->load->view('templates/footer');
 }
 

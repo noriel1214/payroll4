@@ -30,7 +30,94 @@
 
               <div class="title_right">
 
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".pr-leave-modal">Apply For Leave</button>
+           
+           
+           
+                    <div class="modal fade pr-leave-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
 
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Add Application</h4>
+                        </div>
+                        <div class="modal-body">
+ <div class="x_panel">
+    
+                  <div class="x_content">
+
+        <?php echo validation_errors(); ?>
+            
+            <?php echo form_open('application/create'); ?>
+                      
+                    <div class="form-horizontal form-label-left">
+
+                        
+                        <input id="application_id" name="application_id" type="hidden" >
+                               
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Applicant Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="applicant_name" name="applicant_name" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')"  >
+                        </div>
+                      </div>
+                        
+     
+                        
+                        
+                                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Application Date</label>
+                        
+                                        <div class='col-sm-4'>
+                   
+                    <div class="form-group">
+                        <div class='input-group date ' id='myDatepicker2'>
+                            <input id="application_date" name="application_date" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')"  />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                                </div> 
+                        
+                        </div>  
+                        
+     
+    
+     
+                        
+     
+       
+                     
+                     <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                          <button type="submit" class="btn btn-success">Submit</button>
+       
+                            
+                            
+                        </div>
+                      </div>                      
+                      
+                    </div>
+                       <?php echo form_close(); ?>
+                  </div>
+            
+            
+                </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                       
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
       
                   
 
