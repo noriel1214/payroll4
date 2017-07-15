@@ -147,9 +147,7 @@
                       <table class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
-                            <th>
-                              <input type="checkbox" id="check-all" class="flat">
-                            </th>
+  
                             <th class="column-title"># </th>
                            
                             <th class="column-title">Start Date </th>
@@ -166,10 +164,24 @@
                             <?php foreach ($leave as $leave_item): ?>
                         <tr>
                         <td><?php echo $leave_item['leave_id']; ?></td>
-                        <td><?php echo $leave_item['leave_start_date ']; ?></td>
+                        <td><?php echo $leave_item['leave_start_date']; ?></td>
                         <td><?php echo $leave_item['leave_end_date']; ?></td>   
-                        <td><?php echo $leave_item['leave_reason ']; ?></td>   
-                        <td><?php echo $leave_item['leave_status_id  ']; ?></td> 
+                        <td><?php echo $leave_item['leave_reason']; ?></td>   
+                        <td>
+                        <?php
+                            switch ($leave_item['leave_status_id']) {
+                                case 1:
+                                    echo "<span class='label label-info'>Pending</span>";
+                                    break;
+                                case 2:
+                                    echo "<span class='label label-success'>Approved</span>";
+                                    break;
+                                case 3:
+                                    echo "<span class='label label-danger'>Devlined</span>";
+                                    break;                                
+                            }
+                        ?>
+                        </td>
                         <td>
                                 <div role="presentation" class="dropdown form-group-sm">
                       <a  class="dropdown-toggle btn-primary form-control" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
@@ -178,10 +190,26 @@
                               </a>
                       <ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
 
-                        <li role="presentation"><a class="edit-leave-modal" role="menuitem" tabindex="-1" data-toggle="modal" data-target=".pr-leave-modal" 
-                                                   
-                                                   data-vacancy-id="<?php echo $leave_item['leave_id']; ?>">Approve</a>
-                        </li>
+                        <?php
+                            switch ($leave_item['leave_status_id']) {
+                                case 1:?>
+                                        <li role='presentation'><a class='edit-leave-modal' role='menuitem' tabindex='-1' href="<?php echo site_url('leave/update/2/'.$leave_item['leave_id']); ?>">Approve</a></li>
+                                        <li role='presentation'><a class='edit-leave-modal' role='menuitem' tabindex='-1' href="<?php echo site_url('leave/update/3/'.$leave_item['leave_id']); ?>">Decline</a></li>
+                             <?php                   
+                                    break;
+                                case 2: ?>
+
+                                        <li role='presentation'><a class='edit-leave-modal' role='menuitem' tabindex='-1' href="<?php echo site_url('leave/update/3/'.$leave_item['leave_id']); ?>">Decline</a></li>
+<?php
+                                    break;
+                                case 3: ?>
+                                        <li role='presentation'><a class='edit-leave-modal' role='menuitem' tabindex='-1' href="<?php echo site_url('leave/update/2/'.$leave_item['leave_id']); ?>">Approve</a></li>
+                                        
+                                     <?php   
+                                    break;                                
+                            }
+                        ?>
+                          
                         
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a>
                         </li>

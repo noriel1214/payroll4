@@ -23,20 +23,24 @@ public function index()
 }
 
 
-public function create()
+public function create($leave_id = 0)
 {
      $input_method=$this->input->method() === 'post';
+     //1. Load form and validation helpers
     $this->load->helper('form');
     $this->load->library('form_validation');
 
     $data['title'] = 'Add a New leave';
-
-    $this->form_validation->set_rules('reason', 'Reason', 'required');
+    //2. set validation rules
+    $this->form_validation->set_rules('leave_reason', 'Reason', 'required');
     
-        if(!$input_method)
+    // 3. If this is not a post, this is an existing leave record for edit.
+        if($this->input->method() !== 'post')
     {
+        // 3a. Retrieve existing leave
         $data['leave_item'] = $this->leave_model->get_leave($leave_id);
     }else{
+        // 3b. This is a post, preserve the values for creating a new leave
         $preservedata = array(
        'leave_id' => $this->input->post('leave_id'),
         'leave_start_date' => $this->input->post('leave_start_date'),
@@ -45,39 +49,64 @@ public function create()
         'leave_status_id' => $this->input->post('leave_status_id')
         );
                  
-        $data['vacancy_item'] = $preservedata;
+        $data['leave_item'] = $preservedata;
     }  
 
+    
   if ($this->form_validation->run() === FALSE)
     {
-      //////////////////////To be continued.......
+      //4. This is not valid, retrieve all leaves to be displayed to the main (background) list.
          $data['leave'] = $this->leave_model->get_leave();
         $this->load->view('templates/header', $data);
-        $this->load->view('vacancy/index', $data);
+        $this->load->view('leave/index', $data);
         $this->load->view('templates/footer');
 
     }
     else
     {
-        $this->vacancy_model->set_vacancy();
-        $data['vacancy'] = $this->vacancy_model->get_vacancy();
+        //5. Leave is valid, save it to the database, or update existing record using replace()
+        $this->leave_model->set_leave();
+        $data['leave'] = $this->leave_model->get_leave();
         
         //initialize
-        
-
-        $emptyvacancy = array(
-       'vacancy_id' => '',
-        'position_name' => '',
-        'num_of_vac' => '',
-        'apply_last_date' => ''
-        );
-                 
-        $data['vacancy_item'] = $emptyvacancy;
+        $emptyleave = array(
+       'leave_id' => '',
+        'leave_start_date' => '',
+        'leave_end_date' => '',
+        'leave_reason' => '',
+        'leave_status_id' => ''
+        );      
+        $data['leave_item'] = $emptyleave;
         
         $this->load->view('templates/header', $data);
-        $this->load->view('vacancy/index');
+        $this->load->view('leave/index', $data);
         $this->load->view('templates/footer');
     }
+}
+
+public function update($leave_status_id, $leave_id)
+{
+    
+        $this->leave_model->update_leave_status($leave_status_id, $leave_id);
+        $data['leave'] = $this->leave_model->get_leave();
+        
+        //initialize
+        $emptyleave = array(
+        'leave_id' => 0,
+        'leave_start_date' => '',
+        'leave_end_date' => '',
+        'leave_reason' => '',
+        'leave_status_id' => 1
+        );    
+        
+        $data['leave_item'] = $emptyleave;
+        
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+    
+        $this->load->view('templates/header', $data);
+        $this->load->view('leave/index', $data);
+        $this->load->view('templates/footer');
 }
 
 }

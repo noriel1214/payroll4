@@ -23,15 +23,24 @@ public function set_leave()
     $this->load->helper('url');
     $data = array(
         'leave_id' => $this->input->post('leave_id'),
-        'employee_id' => $this->input->post('employee_id'),
+        'employee_id' => 1, //$this->input->post('employee_id'),
         'leave_start_date' => $this->input->post('leave_start_date'),
         'leave_end_date' => $this->input->post('leave_end_date'),
         'leave_reason' => $this->input->post('leave_reason'),
-        'leave_status_id' => $this->input->post('leave_status_id'),
+        'leave_status_id' => 1,
     );
 
-    return $this->db->insert('pr_leave', $data);
+    return $this->db->replace('pr_leave', $data);
 }
 
-        
+public function update_leave_status($leave_status_id, $leave_id)
+{
+    $this->load->helper('url');
+    $data = array(
+        'leave_status_id' => $leave_status_id
+    );
+    $this->db->where('leave_id', $leave_id);
+    return $this->db->update('pr_leave', $data);
+}
+
 }
