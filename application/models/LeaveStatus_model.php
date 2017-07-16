@@ -10,8 +10,5 @@ class LeaveStatus_model extends CI_Model {
         {
             $query = $this->db->get('pr_leave_status');
             return $query->result_array();
-        }
-
-
-        
+        } 
 }

@@ -5,18 +5,23 @@ class Payslip extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('payslip_model');
+                $this->load->model('department_model');
+                $this->load->model('employee_model');
                 $this->load->helper('url_helper');
         }
 
 public function index()
 {
-        //$data['employee'] = $this->news_model->get_news();
+        $data['department'] = $this->department_model->get_department();
+        $data['employee'] = $this->employee_model->get_employee();
         $data['title'] = 'Add payslip';
 
         $this->load->view('templates/header', $data);
         $this->load->view('payslip/index', $data);
         $this->load->view('templates/footer');
 }
+
+
         
         public function view($slug = NULL)
 {

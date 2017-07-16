@@ -6,31 +6,25 @@ class Payslip_model extends CI_Model {
                 $this->load->database();
         }
         
-        public function get_news($slug = FALSE)
+        public function search_payslip($month, $year)
 {
-        if ($slug === FALSE)
-        {
-                $query = $this->db->get('payslip');
-                return $query->result_array();
-        }
-
-        $query = $this->db->get_where('payslip', array('slug' => $slug));
+        $query = $this->db->get_where('pr_payslip', array('month' => $month, 'year' =>$year ));
         return $query->row_array();
 }
 
-public function set_news()
+public function set_payslip()
 {
     $this->load->helper('url');
-
-    $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
     $data = array(
-        'title' => $this->input->post('title'),
-        'slug' => $slug,
-        'text' => $this->input->post('text')
+        'payslip_id' => $this->input->post('payslip_id'),
+        'emp_id' => $this->input->post('emp_id'),
+        'leave_start_date' => $this->input->post('leave_start_date'),
+        'leave_end_date' => $this->input->post('leave_end_date'),
+        'leave_reason' => $this->input->post('leave_reason'),
+        'leave_status_id' => 1,
     );
 
-    return $this->db->insert('payslip', $data);
+    return $this->db->replace('pr_leave', $data);
 }
 
         

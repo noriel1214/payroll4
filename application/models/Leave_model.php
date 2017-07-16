@@ -23,7 +23,7 @@ public function set_leave()
     $this->load->helper('url');
     $data = array(
         'leave_id' => $this->input->post('leave_id'),
-        'employee_id' => 1, //$this->input->post('employee_id'),
+        'emp_id' => 1, //$this->input->post('emp_id'),
         'leave_start_date' => $this->input->post('leave_start_date'),
         'leave_end_date' => $this->input->post('leave_end_date'),
         'leave_reason' => $this->input->post('leave_reason'),

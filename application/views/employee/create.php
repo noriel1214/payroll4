@@ -199,13 +199,20 @@
                       </div>
 
 
-                        
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Department</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="password" class="form-control" value="passwordonetwo">
+                <select id="dept_id" name="dept_id" class="form-control" required="">
+                    <option value="">Select A Department</option>
+                    <?php foreach($department as $department_item): ?>
+                    <option <?php echo ($employee_item['dept_id'] === $department_item['dept_id'] ? "selected":"");  ?> value="<?php echo $department_item["dept_id"]; ?>"><?php echo $department_item["dept_name"]; ?></option>
+                    <?php endforeach; ?>
+                                    </select>
                         </div>
-                      </div>
+                      </div>                        
+ 
+                        
+                        
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">

@@ -5,6 +5,7 @@ class Employee extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('employee_model');
+                $this->load->model('department_model');
                 $this->load->helper('url_helper');
         }
 
@@ -35,6 +36,7 @@ public function create($emp_id=0)
     if(!$input_method)
     {
         $data['employee_item'] = $this->employee_model->get_employee($emp_id);
+        
     }else{
          $preservedata = array(
         'emp_id' => $this->input->post('emp_id'),
@@ -42,10 +44,13 @@ public function create($emp_id=0)
         'lastname' => $this->input->post('lastname'),
         'email' => $this->input->post('email'),
         'phone' => $this->input->post('phone'),
+        'dept_id' => $this->input->post('dept_id')
         );
        $data['employee_item']=$preservedata;
     }
     
+    $data['department'] = $this->department_model->get_department();
+            
     if ($this->form_validation->run() === FALSE)
     {
        

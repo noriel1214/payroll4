@@ -48,5 +48,49 @@ $(document).on("click", ".edit-application-modal", function () {
    $('#myDatepicker3').datetimepicker();
     $('#myDatepicker2').datetimepicker();
 });
+
+
+
+     $(document).ready(function(){
+      var i=1;
+     $("#add_row").click(function(){
+      $('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>");
+
+      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+      i++; 
+  });
+     $("#delete_row").click(function(){
+    	 if(i>1){
+		 $("#addr"+(i-1)).html('');
+		 i--;
+		 }
+	 });
+
+});
+
+
+function makeAjaxCall(){
     
+    var BASE_URL = "<?php echo base_url();?>";
+    
+    alert(BASE_URL);
+    $.ajax({
+        type: "post",
+        url: "http://localhost/CodeIgnitorTutorial/index.php/usercontroller/verifyUser",
+        cache: false,               
+        data: $('#userForm').serialize(),
+        success: function(json){                        
+        try{        
+            var obj = jQuery.parseJSON(json);
+            alert( obj['STATUS']);
+
+
+        }catch(e) {     
+            alert('Exception while request..');
+        }       
+        },
+        error: function(){                      
+            alert('Error while request..');
+        }
+ });
   

@@ -29,6 +29,7 @@ public function set_employee()
         'lastname' => $this->input->post('lastname'),
         'email' => $this->input->post('email'),
         'phone' => $this->input->post('phone'),
+        'dept_id' => $this->input->post('dept_id'),
     );
 
     return $this->db->replace('pr_employee', $data);
