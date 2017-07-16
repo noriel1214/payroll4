@@ -37,6 +37,29 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>build/css/custom.min.css" rel="stylesheet">
+    
+    <style>
+        
+html, body {
+    padding-top: 20px;
+}
+
+[data-role="dynamic-fields"] > .form-inline + .form-inline {
+    margin-top: 0.5em;
+}
+
+[data-role="dynamic-fields"] > .form-inline [data-role="add"] {
+    display: none;
+}
+
+[data-role="dynamic-fields"] > .form-inline:last-child [data-role="add"] {
+    display: inline-block;
+}
+
+[data-role="dynamic-fields"] > .form-inline:last-child [data-role="remove"] {
+    display: none;
+}        
+    </style>
   </head>
 
   <body class="nav-md">

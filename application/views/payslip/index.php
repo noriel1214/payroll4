@@ -1,4 +1,9 @@
-    <!-- page content -->
+
+
+
+
+
+<!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -75,44 +80,52 @@
    
 <div class="row">
           <div class="col-md-6 col-xs-12">
-                <div class="x_panel">
+              
+              
+                  <div class="x_panel">
                   <div class="x_title">
-                    <h2>Allowances</h2>
+                    <h2>Deductions</h2>
     
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <br />
-                    <div class="form-horizontal form-label-left input_mask">
+                    
+                    
+  
+            <div data-role="dynamic-fields">
+                <div class="form-horizontal form-label-left form-inline">
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                      
+                    
+                    
+                        <input type="text" class="form-control" id="field-name" placeholder="Type">
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                       
+                        <input type="text" class="form-control" id="field-value" placeholder="Amount">
+                    </div>
+                    <button class="btn btn-success" data-role="remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button class="btn btn-primary" data-role="add">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>  <!-- /div.form-inline -->
+            </div>  <!-- /div[data-role="dynamic-fields"] -->
+               <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+ 
+                    <button class="btn btn-primary" data-role="add">
+                        Calculate Total Allowance
+                    </button>
 
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control " id="inputSuccess2" placeholder="Type">
-        
-                      </div>
-
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control" id="inputSuccess3" placeholder="Amount">
-          
-                      </div>
-
-                      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 form-group">
-                          <button  type="button" class="form-control has-feedback-left btn-default" id="inputSuccess4" placeholder="Email">Add Allowance</button>
-                        <span class="fa fa-plus-circle form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control" id="inputSuccess5" placeholder="Phone">
-                        <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
-                      </div>
-
-          
-               
+               </div>
 
                     </div>
                   </div>
                 </div>
 
-              </div>
+
                         
                         
     <div class="col-md-6 col-xs-12">
@@ -124,38 +137,96 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <div class="form-horizontal form-label-left input_mask">
+                    
+                    
+  
+            <div data-role="dynamic-fields">
+                <div class="form-horizontal form-label-left form-inline">
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                      
+                    
+                    
+                        <input type="text" class="form-control" id="field-name" placeholder="Type">
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                       
+                        <input type="text" class="form-control" id="field-value" placeholder="Amount">
+                    </div>
+                    <button class="btn btn-success" data-role="remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button class="btn btn-primary" data-role="add">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>  <!-- /div.form-inline -->
+            </div>  <!-- /div[data-role="dynamic-fields"] -->
+               <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+ 
+                    <button class="btn btn-primary" data-role="add">
+                        Calculate Total Deduction
+                    </button>
 
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control " id="inputSuccess2" placeholder="Type">
-        
-                      </div>
+               </div>
 
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control" id="inputSuccess3" placeholder="Amount">
-          
-                      </div>
+                    </div>
+                  </div>
 
-                      <div class="col-md-3 col-md-offset-3 col-sm-3 col-sm-offset-3 col-xs-12 form-group">
-                          <button  type="button" class="form-control has-feedback-left btn-default" placeholder="Email"></button>
-                        <span class="fa fa-plus-circle form-control-feedback left" aria-hidden="true"></span>
-                      </div>
+              </div>                        
+                        
+                  </div>     
 
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control" id="inputSuccess5" placeholder="Phone">
-                        <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
-                      </div>
+                        <div class="row">
+                            
+      <div class="col-md-offset-2 col-md-8 col-xs-12">
+              
+              
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Summary</h2>
+    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    
+                    
+  
+            <div data-role="dynamic-fields">
+                <div class="form-horizontal form-label-left form-inline">
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                      
+                    
+                    
+                        <input type="text" class="form-control" id="field-name" placeholder="Type">
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                       
+                        <input type="text" class="form-control" id="field-value" placeholder="Amount">
+                    </div>
+                    <button class="btn btn-success" data-role="remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button class="btn btn-primary" data-role="add">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>  <!-- /div.form-inline -->
+            </div>  <!-- /div[data-role="dynamic-fields"] -->
+               <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+ 
+                    <button class="btn btn-primary" data-role="add">
+                        Calculate Total Allowance
+                    </button>
 
-          
-               
+               </div>
 
                     </div>
                   </div>
                 </div>
-
-              </div>                        
+                            
+                        </div>                        
                         
-                  </div>       
+                        
+                        
 
                     </form>
                   </div>
@@ -171,7 +242,7 @@
 
 
               </div>
-
+              </div>
               <div class="col-md-6 col-xs-12">
             
                   
