@@ -12,6 +12,8 @@ class Payslip extends CI_Controller {
 
 public function index()
 {
+    $this->load->helper('form');
+    $this->load->library('form_validation');    
         $data['department'] = $this->department_model->get_department();
         $data['employee'] = $this->employee_model->get_employee();
         $data['title'] = 'Add payslip';
@@ -45,6 +47,13 @@ public function create()
     $this->load->helper('form');
     $this->load->library('form_validation');
 
+    
+        $deduction_type = $this->input->post('deduction_type');
+        $deduction_amount = $this->input->post('deduction_amount');
+         
+        $deduction_count=count($deduction_type);
+        
+        
     $data['title'] = 'Add a New payslip';
 
     $this->form_validation->set_rules('title', 'Title', 'required');

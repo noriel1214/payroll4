@@ -126,4 +126,9 @@ function makeAjaxCall(){
             alert('Error while request..');
         }
  });}
+ 
+ function test1(e){
+     e.preventDefault();
+     alert('test1');
+ }
   

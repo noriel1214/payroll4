@@ -1,4 +1,5 @@
-
+              <?php echo validation_errors(); ?>
+                    <?php echo form_open('payslip/create'); ?>
 
 
 
@@ -21,8 +22,8 @@
                 <div class="x_panel">
 
                   <div class="x_content">
-                    <br />
-                    <form class="form-horizontal form-label-left input_mask">
+                    
+                    <div class="form-horizontal form-label-left input_mask">
 
 <div class="form-group col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Department</label>
@@ -84,12 +85,12 @@
               
                   <div class="x_panel">
                   <div class="x_title">
-                    <h2>Deductions</h2>
+                    <h2>Allowances</h2>
     
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <br />
+                    
                     
                     
   
@@ -99,11 +100,11 @@
                       
                     
                     
-                        <input type="text" class="form-control" id="field-name" placeholder="Type">
+                        <input type="text" class="form-control" name="deduction_type[]" id="deduction_type[]" placeholder="Type">
                     </div>
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                        
-                        <input type="text" class="form-control" id="field-value" placeholder="Amount">
+                        <input type="text" class="form-control" name="deduction_amount[]" id="deduction_amount[]" placeholder="Amount">
                     </div>
                     <button class="btn btn-success" data-role="remove">
                         <span class="glyphicon glyphicon-remove"></span>
@@ -136,7 +137,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <br />
+                    
                     
                     
   
@@ -187,38 +188,49 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <br />
+     
                     
                     
-  
-            <div data-role="dynamic-fields">
-                <div class="form-horizontal form-label-left form-inline">
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                      
-                    
-                    
-                        <input type="text" class="form-control" id="field-name" placeholder="Type">
-                    </div>
-                    <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                       
-                        <input type="text" class="form-control" id="field-value" placeholder="Amount">
-                    </div>
-                    <button class="btn btn-success" data-role="remove">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                    <button class="btn btn-primary" data-role="add">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </div>  <!-- /div.form-inline -->
-            </div>  <!-- /div[data-role="dynamic-fields"] -->
-               <div class="col-md-6 col-sm-6 col-xs-12 form-group">
- 
-                    <button class="btn btn-primary" data-role="add">
-                        Calculate Total Allowance
-                    </button>
-
-               </div>
-
+                       <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Basic</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input disabled id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Total Allowance</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input disabled id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Total Deduction</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input disabled id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Net Salary</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input disabled id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                        </div>
+                      </div>      
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                   <select name="department_id" class="form-control" onchange="get_employees(this.value);">
+                    <option value="">Paid</option>
+                    <option value="">Unpaid</option>
+                          
+                                    </select>
+                        </div>
+                      </div>  
+                      <div class="form-group">
+                        
+                        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+<button type="submit" class="btn btn-success">Create Payslip</button>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -228,7 +240,7 @@
                         
                         
 
-                    </form>
+                    </div>
                   </div>
                 </div>
                   
@@ -243,21 +255,7 @@
 
               </div>
               </div>
-              <div class="col-md-6 col-xs-12">
-            
-                  
-                  
-                  
-                
-                  
-                  
-                  
-                  
-                       
-                  
-                  
-                  
-              </div>
+          
 
 
             </div>
@@ -273,6 +271,8 @@
             
             
           </div>
-        </div>
-    
+      
+    <?php echo form_close(); ?>
         <!-- /page content -->
+        
+        
