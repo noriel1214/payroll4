@@ -110,11 +110,11 @@
                       
                     
                     
-                        <input type="text" class="form-control" name="deduction_type[]" id="deduction_type[]" placeholder="Type">
+                        <input type="text" class="form-control" name="allowance_type[]" id="allowance_type[]" placeholder="Type">
                     </div>
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                        
-                        <input type="text" class="form-control" name="deduction_amount[]" id="deduction_amount[]" placeholder="Amount">
+                        <input type="text" class="form-control" name="allowance_amount[]" id="allowance_amount[]" placeholder="Amount">
                     </div>
                     <button class="btn btn-success" data-role="remove">
                         <span class="glyphicon glyphicon-remove"></span>
@@ -157,11 +157,11 @@
                       
                     
                     
-                        <input type="text" class="form-control" id="field-name" placeholder="Type">
+                        <input type="text" class="form-control" id="field-name" name="deduction_type[]" id="deduction_type[]" placeholder="Type">
                     </div>
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                        
-                        <input type="text" class="form-control" id="field-value" placeholder="Amount">
+                        <input type="text" class="form-control" id="field-value" name="deduction_amount[]" id="deduction_amount[]" placeholder="Amount">
                     </div>
                     <button class="btn btn-success" data-role="remove">
                         <span class="glyphicon glyphicon-remove"></span>

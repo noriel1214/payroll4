@@ -78,7 +78,7 @@ public function create1()
         $data['payslip_item'] = $emptypayslip;
         
         $this->load->view('templates/header', $data);
-        $this->load->view('payslip/index');
+        $this->load->view('payslip/list', $data);
         $this->load->view('templates/footer');
     }
 }
