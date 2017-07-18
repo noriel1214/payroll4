@@ -66,9 +66,9 @@ $route['message/create'] = 'message/create';
 $route['message/(:any)'] = 'message/view/$1';
 $route['message'] = 'message';
 
-$route['noticeboard/create'] = 'noticeboard/create';
-$route['noticeboard/(:any)'] = 'noticeboard/view/$1';
-$route['noticeboard'] = 'noticeboard';
+$route['notice/create'] = 'notice/create';
+$route['notice/(:any)'] = 'notice/view/$1';
+$route['notice'] = 'notice';
 
 $route['expense/create'] = 'expense/create';
 $route['expense/(:any)'] = 'expense/view/$1';

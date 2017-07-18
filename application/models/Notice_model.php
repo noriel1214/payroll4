@@ -1,5 +1,5 @@
 <?php
-class Noticeboard_model extends CI_Model {
+class Notice_model extends CI_Model {
 
         public function __construct()
         {
@@ -10,11 +10,11 @@ class Noticeboard_model extends CI_Model {
 {
         if ($slug === FALSE)
         {
-                $query = $this->db->get('noticeboard');
+                $query = $this->db->get('notice');
                 return $query->result_array();
         }
 
-        $query = $this->db->get_where('noticeboard', array('slug' => $slug));
+        $query = $this->db->get_where('notice', array('slug' => $slug));
         return $query->row_array();
 }
 
@@ -30,7 +30,7 @@ public function set_news()
         'text' => $this->input->post('text')
     );
 
-    return $this->db->insert('noticeboard', $data);
+    return $this->db->insert('notice', $data);
 }
 
         

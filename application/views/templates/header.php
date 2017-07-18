@@ -122,7 +122,7 @@ html, body {
                   </li>
                   <li><a href="<?php echo site_url('award'); ?>"><i class="fa fa-clone"></i>Award </a></li>
                   <li><a href="<?php echo site_url('expense'); ?>"><i class="fa fa-clone"></i>Expense </a></li>
-                  <li><a href="<?php echo site_url('noticeboard'); ?>"><i class="fa fa-clone"></i>Noticeboard </a></li>
+                  <li><a href="<?php echo site_url('notice'); ?>"><i class="fa fa-clone"></i>Noticeboard </a></li>
                   <li><a href="<?php echo site_url('message'); ?>"><i class="fa fa-clone"></i>Message </a></li>
                     <li><a href="<?php echo site_url('settings'); ?>"><i class="fa fa-clone"></i>Settings</a></li>
                   <li><a href="<?php echo site_url('account'); ?>"><i class="fa fa-clone"></i>Account </a></li>

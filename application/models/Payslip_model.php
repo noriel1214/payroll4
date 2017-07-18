@@ -31,9 +31,8 @@ public function set_payslip()
     
     $this->db->trans_begin();
     $this->db->replace('pr_payslip', $data);
-    
-  
-        for($i=0, $count = count($allowance_type); $i < $count; $i++) {
+
+    for($i=0, $count = count($allowance_type); $i < $count; $i++) {
             $data_allowance =  array(
                 'emp_id' => $this->input->post('emp_id'),
                 'pay_month' => $this->input->post('pay_month'),
@@ -69,8 +68,7 @@ public function set_payslip()
 }
 
 public function get_payslip()
-{
-    
+{ 
     $this->db->select('p.*, e.firstname, e.lastname, a.allowance_type, a.allowance_amt, d.deduction_type, d.deduction_amt');
     $this->db->from('pr_payslip p');
     $this->db->join('pr_employee e', 'p.emp_id = e.emp_id', 'left outer');
