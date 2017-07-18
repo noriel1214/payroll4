@@ -63,16 +63,16 @@ public function ajax_call()
     if ($this->input->method() === 'post' && $this->input->post('dept_id')) 
     {
         $dpto =$this->input->post('dept_id');
-        $employees = $this->employee_model->get_employee_by_dept($dpto);
+        $data["employees"] = $this->employee_model->get_employee_by_dept($dpto);
+  
+        
+           $this->output
+           ->set_content_type("application/json")
+           ->set_output(json_encode($this->employee_model->get_employee_by_dept($dpto)));
 
-        foreach ($employees as $emp)
-        {
-            $empfinal[$emp->firstname] = "asdfasdfsad";
-        }
-
-        //dropdown
-
-        echo form_dropdown('Employees', $empfinal);
+        
+ 
+       
     }
     else 
     {

@@ -137,16 +137,24 @@ function makeAjaxCall(){
  
      
                 var selDpto = $("#dept_id").val();
-                alert(selDpto);
                 $.ajax({
                     url: "payslip/ajax_call",
                     async: false,
                     type: "POST",
                     data: "dept_id=" + selDpto,
                     dataType: "html",
+                    success: function(data) { 
+                          var obj=jQuery.parseJSON(data);
+                        //alert(obj.length);
+                        $('select#emp_id').html('<option>Select A Department First</option>'); 
+                for(var i=0;i<obj.length;i++) { 
+                    $("<option />").val(obj[i].emp_id).text(obj[i].firstname).appendTo($('select#emp_id')); 
+                } 
+            } 
 
-                    success: function(data) {
-                        $('#emp_id').html(data);
+                    ,
+                    error: function(err){
+                        alert("error");
                     }
                 });     
  }
