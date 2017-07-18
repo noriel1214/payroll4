@@ -1,3 +1,5 @@
+<!--payslip index changed...-->
+
               <?php echo validation_errors(); ?>
                     <?php echo form_open('payslip/create'); ?>
 
@@ -34,6 +36,8 @@
                     <?php endforeach; ?>
                                     </select>
             </div>
+                        
+                        
 
 <div class="form-group col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Employee</label>
