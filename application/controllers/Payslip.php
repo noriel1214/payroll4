@@ -24,23 +24,6 @@ public function index()
 }
 
 
-        
-        public function view($slug = NULL)
-{
-        $data['payslip_item'] = $this->news_model->get_news($slug);
-
-        if (empty($data['payslip_item']))
-        {
-                show_404();
-        }
-
-        $data['title'] = $data['payslip_item']['title'];
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('payslip/view', $data);
-        $this->load->view('templates/footer');
-}
-
 
 public function create()
 {
@@ -72,5 +55,30 @@ public function create()
         $this->load->view('payslip/success');
     }
 }
+
+
+public function ajax_call()
+{
+    //check to see people wont go directly
+    if ($this->input->method() === 'post' && $this->input->post('dept_id')) 
+    {
+        $dpto =$this->input->post('dept_id');
+        $employees = $this->employee_model->get_employee_by_dept($dpto);
+
+        foreach ($employees as $emp)
+        {
+            $empfinal[$emp->firstname] = "asdfasdfsad";
+        }
+
+        //dropdown
+
+        echo form_dropdown('Employees', $empfinal);
+    }
+    else 
+    {
+        redirect('index');
+    }
+}
+
 
 }

@@ -29,7 +29,7 @@
 
 <div class="form-group col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Department</label>
-                <select id="dept_id" name="dept_id" class="form-control" required="" onchange="makeAjaxCall()">
+                <select id="dept_id" name="dept_id" class="form-control" required="" onchange="test1();">
                     <option value="">Select A Department</option>
                     <?php foreach($department as $department_item): ?>
                     <option value="<?php echo $department_item["dept_id"]; ?>"><?php echo $department_item["dept_name"]; ?></option>
@@ -41,15 +41,10 @@
 
 <div class="form-group col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Employee</label>
-                <select name="department_id" class="form-control" required="" onchange="get_employees(this.value);">
-                    <option value="">Select A Department First</option>
-                                            <option value="1">
-                            Marketing Department                        </option>
-                                            <option value="2">
-                            Technology  Department                        </option>
-                                            <option value="3">
-                            HR Department                        </option>
+                <select id="emp_id" name="emp_id" class="form-control" required="">
+
                                     </select>
+          
             </div>
                         <div class="form-group col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Month</label>

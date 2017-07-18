@@ -18,6 +18,12 @@ class Employee_model extends CI_Model {
         return $query->row_array();
 }
 
+   public function get_employee_by_dept($dept_id)
+{
+        $query = $this->db->get_where('pr_employee', array('dept_id' => $dept_id));
+        return $query->result_array();
+}
+
 public function set_employee()
 {
     $this->load->helper('url');

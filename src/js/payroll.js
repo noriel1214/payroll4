@@ -9,6 +9,7 @@ $(function() {
         }
     );
     // Add button click
+
     $(document).on(
         'click',
         '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
@@ -22,9 +23,13 @@ $(function() {
             container.append(new_field_group);
         }
     );
+    
+   
+   
+    
+    
+    
 });
-
-
 
 
 
@@ -127,8 +132,40 @@ function makeAjaxCall(){
         }
  });}
  
- function test1(e){
-     e.preventDefault();
-     alert('test1');
+ function test1(){
+
+ 
+     
+                var selDpto = $("#dept_id").val();
+                alert(selDpto);
+                $.ajax({
+                    url: "payslip/ajax_call",
+                    async: false,
+                    type: "POST",
+                    data: "dept_id=" + selDpto,
+                    dataType: "html",
+
+                    success: function(data) {
+                        $('#emp_id').html(data);
+                    }
+                });     
  }
   
+  
+  
+function DeptEmpShow(e) {
+             e.preventDefault();
+                var selDpto = $(this).attr('value');
+                console.log(selDpto);
+                $.ajax({
+                    url: "payslip/ajax_call",
+                    async: false,
+                    type: "POST",
+                    data: "dept_id="+selDpto,
+                    dataType: "html",
+
+                    success: function(data) {
+                        $('#emp_id').html(data);
+                    }
+                });
+};
