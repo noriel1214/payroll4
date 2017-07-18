@@ -78,8 +78,9 @@ $route['award/create'] = 'award/create';
 $route['award/(:any)'] = 'award/view/$1';
 $route['award'] = 'award';
 
+
+$route['payslip/create1'] = 'payslip/create1';
 $route['payslip/ajax_call'] = 'payslip/ajax_call';
-$route['payslip/create'] = 'payslip/create';
 $route['payslip/(:any)'] = 'payslip/view/$1';
 $route['payslip'] = 'payslip';
 

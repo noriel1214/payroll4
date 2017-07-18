@@ -16,12 +16,11 @@ public function set_payslip()
 {
     $this->load->helper('url');
     $data = array(
-        'payslip_id' => $this->input->post('payslip_id'),
         'emp_id' => $this->input->post('emp_id'),
-        'leave_start_date' => $this->input->post('leave_start_date'),
-        'leave_end_date' => $this->input->post('leave_end_date'),
-        'leave_reason' => $this->input->post('leave_reason'),
-        'leave_status_id' => 1,
+        'dept_id' => $this->input->post('dept_id'),
+        'pay_month' => $this->input->post('pay_month'),
+        'pay_year' => $this->input->post('pay_year'),
+
     );
 
     return $this->db->replace('pr_leave', $data);

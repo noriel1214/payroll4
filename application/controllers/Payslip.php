@@ -23,24 +23,35 @@ public function index()
         $this->load->view('templates/footer');
 }
 
-
-
 public function create()
+{
+    $this->load->helper('form');
+    $this->load->library('form_validation');    
+        $data['department'] = $this->department_model->get_department();
+        $data['employee'] = $this->employee_model->get_employee();
+        $data['title'] = 'Add payslip';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('payslip/index', $data);
+        $this->load->view('templates/footer');
+}
+
+public function create1()
 {
     $this->load->helper('form');
     $this->load->library('form_validation');
 
     
-        $deduction_type = $this->input->post('deduction_type');
-        $deduction_amount = $this->input->post('deduction_amount');
+        //$deduction_type = $this->input->post('deduction_type');
+        //$deduction_amount = $this->input->post('deduction_amount');
          
-        $deduction_count=count($deduction_type);
+        //$deduction_count=count($deduction_type);
         
         
     $data['title'] = 'Add a New payslip';
 
-    $this->form_validation->set_rules('title', 'Title', 'required');
-    $this->form_validation->set_rules('text', 'Text', 'required');
+    $this->form_validation->set_rules('dept_id', 'dept_id', 'required');
+
 
     if ($this->form_validation->run() === FALSE)
     {
@@ -51,8 +62,24 @@ public function create()
     }
     else
     {
-        $this->news_model->set_news();
-        $this->load->view('payslip/success');
+        $this->payslip_model->set_payslip();
+        $data['payslip'] = $this->payslip_model->get_payslip();
+        
+        //initialize
+        
+
+        $emptypayslip = array(
+       'dept_id' => '',
+        'emp_id' => '',
+        'pay_month' => '',
+        'pay_year' => ''
+        );
+                 
+        $data['payslip_item'] = $emptypayslip;
+        
+        $this->load->view('templates/header', $data);
+        $this->load->view('payslip/index');
+        $this->load->view('templates/footer');
     }
 }
 

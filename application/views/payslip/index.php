@@ -1,7 +1,7 @@
 
 
               <?php echo validation_errors(); ?>
-                    <?php echo form_open('payslip/create'); ?>
+                    <?php echo form_open('payslip/create1'); ?>
 
 
 
@@ -42,32 +42,43 @@
 <div class="form-group col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Employee</label>
                 <select id="emp_id" name="emp_id" class="form-control" required="">
-
+ <option value="">Select A Department First</option>
                                     </select>
           
             </div>
                         <div class="form-group col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Month</label>
-                <select name="department_id" class="form-control" required="" onchange="get_employees(this.value);">
+                <select id="pay_month" name="pay_month" class="form-control" required="" onchange="get_employees(this.value);">
                     <option value="">Select A Month</option>
-                                            <option value="1">
-                            Marketing Department                        </option>
-                                            <option value="2">
-                            Technology  Department                        </option>
-                                            <option value="3">
-                            HR Department                        </option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
                                     </select>
             </div>
                         <div class="form-group col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
                 <label class="control-label" style="margin-bottom: 5px;">Year</label>
-                <select name="department_id" class="form-control" required="" onchange="get_employees(this.value);">
+                <select id="pay_year" name="pay_year" class="form-control" required="" onchange="get_employees(this.value);">
                     <option value="">Select A Year</option>
-                                            <option value="1">
-                            Marketing Department                        </option>
-                                            <option value="2">
-                            Technology  Department                        </option>
-                                            <option value="3">
-                            HR Department                        </option>
+                   <option >2017</option>
+                   <option >2018</option>
+                   <option >2019</option>
+                   <option >2020</option>
+                   <option >2021</option>
+                   <option >2022</option>
+                   <option >2023</option>
+                   <option >2024</option>
+                   <option >2025</option>
+                   <option >2026</option>
+                   <option >2027</option>
                                     </select>
             </div>
                         
