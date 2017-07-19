@@ -128,7 +128,7 @@ html, body {
                   <li><a href="<?php echo site_url('account'); ?>"><i class="fa fa-clone"></i>Account </a></li>
                 </ul>
               </div>
-  [pppopo
+  
 
             </div>
             <!-- /sidebar menu -->

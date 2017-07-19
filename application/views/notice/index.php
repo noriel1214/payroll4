@@ -31,7 +31,7 @@
               <div class="title_right">
 
 
-                       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add New Award</button>
+                       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add New Notice</button>
  
                        
                                          <!-- Large modal -->
