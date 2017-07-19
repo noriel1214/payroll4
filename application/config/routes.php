@@ -102,6 +102,7 @@ $route['department'] = 'department';
 
 $route['employee/create'] = 'employee/create';
 $route['employee/edit'] = 'employee/edit/$1';
+$route['employee/delete'] = 'employee/delete';
 $route['employee/(:any)'] = 'employee/view/$1';
 $route['employee'] = 'employee';
 

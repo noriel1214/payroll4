@@ -10,30 +10,16 @@ class Account extends CI_Controller {
 
 public function index()
 {
-        //$data['employee'] = $this->news_model->get_news();
-        $data['title'] = 'Add account';
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+    
+        $data['title'] = 'Manage Profile';
 
         $this->load->view('templates/header', $data);
         $this->load->view('account/index', $data);
         $this->load->view('templates/footer');
 }
         
-        public function view($slug = NULL)
-{
-        $data['account_item'] = $this->news_model->get_news($slug);
-
-        if (empty($data['account_item']))
-        {
-                show_404();
-        }
-
-        $data['title'] = $data['account_item']['title'];
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('account/view', $data);
-        $this->load->view('templates/footer');
-}
-
 
 public function create()
 {

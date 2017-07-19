@@ -11,12 +11,14 @@ class Employee extends CI_Controller {
 
 public function index()
 {
-        $data['employee'] = $this->employee_model->get_employee();
-        $data['title'] = 'Add Employee';
+    $this->load->helper('form');
+    $this->load->library('form_validation');    
+    $data['employee'] = $this->employee_model->get_employee();
+    $data['title'] = 'Add Employee';
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('employee/index', $data);
-        $this->load->view('templates/footer');
+    $this->load->view('templates/header', $data);
+    $this->load->view('employee/index', $data);
+    $this->load->view('templates/footer');
 }
        
 
@@ -68,5 +70,17 @@ public function create($emp_id=0)
     }
 }
 
+public function delete()
+{   
+    $this->load->helper('form');
+    $this->load->library('form_validation');    
+    $data['title'] = 'Employee List';
+    $this->employee_model->delete_employee($this->input->post('emp_id'));
+    $data['employee'] = $this->employee_model->get_employee();
+    $this->load->view('templates/header', $data);
+    $this->load->view('employee/index');
+    $this->load->view('templates/footer');
+   
+}
 
 }

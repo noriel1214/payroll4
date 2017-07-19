@@ -8,12 +8,65 @@
    
             </div>
 
+             <div class="modal fade pr-employee-delete-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Delete Employee</h4>
+                        </div>
+                        <div class="modal-body">
+                            
+                            
+  <div class="x_panel">
+    
+                  <div class="x_content">
+
+        <?php echo validation_errors(); ?>
+            
+            <?php echo form_open('employee/delete'); ?>
+                      
+                    <div class="form-horizontal form-label-left">
+
+                        <input id="emp_id" name="emp_id" type="hidden">
+                        
+                      <div class="form-group">
+                        <label class="control-label col-md-6 col-sm-6 col-xs-12">Do you really want to delete this employee?</label>
+                      </div>
+                      <div class="ln_solid"></div>
+                     
+                     <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                          <button type="submit" class="btn btn-success">Delete</button>
+                        </div>
+                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      </div>                      
+                      
+                    </div>
+                       
+                  </div>
+            
+            
+                </div>                             
+       
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <?php echo form_close(); ?>
             <div class="clearfix"></div>
    
             <div class="row">
  
               <div class="clearfix"></div>
 
+              
+                
+              
+              
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
 
@@ -59,7 +112,7 @@
                         </li>
 
                         <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Delete</a>
+                        <li role="presentation"><a class="delete-employee-delete-modal" role="menuitem" tabindex="-1" data-toggle="modal" data-target=".pr-employee-delete-modal" data-emp-id="<?php echo $employee_item['emp_id'] ?>">Delete</a>
                         </li>
                       </ul>
                     </div>                

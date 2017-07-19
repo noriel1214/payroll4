@@ -6,15 +6,9 @@ class Settings_model extends CI_Model {
                 $this->load->database();
         }
         
-        public function get_settings($setting_id = FALSE)
+        public function get_settings()
 {
-        if ($slug === FALSE)
-        {
-                $query = $this->db->get('pr_settings');
-                return $query->result_array();
-        }
-
-        $query = $this->db->get_where('pr_settings', array('setting_id' => $setting_id));
+        $query = $this->db->get('pr_settings');
         return $query->row_array();
 }
 

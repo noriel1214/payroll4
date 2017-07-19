@@ -33,6 +33,10 @@ $(function() {
 
 
 
+$(document).on("click", ".delete-employee-delete-modal", function () {
+
+    $(".pr-employee-delete-modal #emp_id").val( $(this).data('emp-id'));
+});
 
 
 

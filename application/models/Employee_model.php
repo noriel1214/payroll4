@@ -41,5 +41,10 @@ public function set_employee()
     return $this->db->replace('pr_employee', $data);
 }
 
+public function delete_employee($emp_id)
+{
+      $this->db->where('emp_id', $emp_id);
+      return $this->db->delete('pr_employee'); 
+}
         
 }
