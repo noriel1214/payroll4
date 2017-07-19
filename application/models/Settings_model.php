@@ -6,28 +6,28 @@ class Settings_model extends CI_Model {
                 $this->load->database();
         }
         
-        public function get_news($slug = FALSE)
+        public function get_settings($setting_id = FALSE)
 {
         if ($slug === FALSE)
         {
-                $query = $this->db->get('settings');
+                $query = $this->db->get('pr_settings');
                 return $query->result_array();
         }
 
-        $query = $this->db->get_where('settings', array('slug' => $slug));
+        $query = $this->db->get_where('pr_settings', array('setting_id' => $setting_id));
         return $query->row_array();
 }
 
-public function set_news()
+public function set_settings()
 {
-    $this->load->helper('url');
-
-    $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
     $data = array(
-        'title' => $this->input->post('title'),
-        'slug' => $slug,
-        'text' => $this->input->post('text')
+        'system_name' => $this->input->post('system_name'),
+        'system_title' => $this->input->post('system_title'),
+        'system_addr' => $this->input->post('system_addr'),
+        'system_phone' => $this->input->post('system_phone'),
+        'system_email' => $this->input->post('system_email'),
+        'system_name' => $this->input->post('system_name'),
+        'system_name' => $this->input->post('system_name')
     );
 
     return $this->db->insert('settings', $data);

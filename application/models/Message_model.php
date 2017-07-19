@@ -6,31 +6,29 @@ class Message_model extends CI_Model {
                 $this->load->database();
         }
         
-        public function get_news($slug = FALSE)
+        public function get_message($msg_id = FALSE)
 {
-        if ($slug === FALSE)
+        if ($msg_id === FALSE)
         {
-                $query = $this->db->get('message');
+                $query = $this->db->get('pr_message');
                 return $query->result_array();
         }
 
-        $query = $this->db->get_where('message', array('slug' => $slug));
+        $query = $this->db->get_where('pr_message', array('msg_id' => $msg_id));
         return $query->row_array();
 }
 
-public function set_news()
+public function set_message()
 {
-    $this->load->helper('url');
-
-    $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
     $data = array(
-        'title' => $this->input->post('title'),
-        'slug' => $slug,
-        'text' => $this->input->post('text')
+        'msg_id' => $this->input->post('msg_id'),
+        'msg_subject' => $this->input->post('msg_subject'),
+        'msg_recipient' => $this->input->post('msg_recipient'),
+        'msg_sender' => $this->input->post('msg_sender'),
+        'msg_msg' => $this->input->post('msg_msg')
     );
 
-    return $this->db->insert('message', $data);
+    return $this->db->replace('pr_message', $data);
 }
 
         

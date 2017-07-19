@@ -8,9 +8,14 @@ class Expense extends CI_Controller {
                 $this->load->helper('url_helper');
         }
 
-public function index()
+public function index($expense_id = 0)
 {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+    
         $data['expense'] = $this->expense_model->get_expense();
+        $data['expense_item'] = $this->expense_model->get_expense($expense_id);
+        
         $data['title'] = 'Add Expense';
 
         $this->load->view('templates/header', $data);
@@ -20,8 +25,6 @@ public function index()
        
 public function create()
 {
- 
-     
     $this->load->helper('form');
     $this->load->library('form_validation');
 

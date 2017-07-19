@@ -6,31 +6,31 @@ class Notice_model extends CI_Model {
                 $this->load->database();
         }
         
-        public function get_news($slug = FALSE)
+        public function get_notice($notice_id = FALSE)
 {
-        if ($slug === FALSE)
+        if ($notice_id === FALSE)
         {
-                $query = $this->db->get('notice');
+                $query = $this->db->get('pr_notice');
                 return $query->result_array();
         }
 
-        $query = $this->db->get_where('notice', array('slug' => $slug));
+        $query = $this->db->get_where('pr_notice', array('notice_id' => $notice_id));
         return $query->row_array();
 }
 
-public function set_news()
+public function set_notice()
 {
     $this->load->helper('url');
 
-    $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
     $data = array(
-        'title' => $this->input->post('title'),
-        'slug' => $slug,
-        'text' => $this->input->post('text')
+        'notice_id' => $this->input->post('notice_id'),
+        'notice_title' => $this->input->post('notice_title'),
+        'notice_desc' => $this->input->post('notice_desc'),
+        'notice_status' => $this->input->post('notice_status'),
+        'notice_date' => $this->input->post('notice_date')
     );
 
-    return $this->db->insert('notice', $data);
+    return $this->db->replace('pr_notice', $data);
 }
 
         

@@ -5,46 +5,44 @@ class Message extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('message_model');
+                $this->load->model('employee_model');
                 $this->load->helper('url_helper');
         }
 
-public function index()
+public function index($msg_id = 0)
 {
-        //$data['employee'] = $this->news_model->get_news();
-        $data['title'] = 'Add message';
+    $this->load->helper('form');
+    $this->load->library('form_validation');
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('message/index', $data);
-        $this->load->view('templates/footer');
+    $data['message'] = $this->message_model->get_message();
+    $data['message_item'] = $this->message_model->get_message($msg_id);
+    $data['employee'] = $this->employee_model->get_employee();
+    
+    $data['title'] = 'Private Messaging';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('message/index', $data);
+    $this->load->view('templates/footer');
+    
 }
         
-        public function view($slug = NULL)
-{
-        $data['message_item'] = $this->news_model->get_news($slug);
-
-        if (empty($data['message_item']))
-        {
-                show_404();
-        }
-
-        $data['title'] = $data['message_item']['title'];
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('message/view', $data);
-        $this->load->view('templates/footer');
-}
-
-
 public function create()
 {
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $data['title'] = 'Add a New message';
+    $this->form_validation->set_rules('msg_recipient', 'Recipient', 'required');
 
-    $this->form_validation->set_rules('title', 'Title', 'required');
-    $this->form_validation->set_rules('text', 'Text', 'required');
-
+    $preservedata = array(
+        'msg_id' => $this->input->post('msg_id'),
+        'msg_subject' => $this->input->post('msg_subject'),
+        'msg_recipient' => $this->input->post('msg_recipient'),
+        'msg_sender' => $this->input->post('msg_sender'),
+        'msg_msg' => $this->input->post('msg_msg')
+    );
+                 
+        $data['message_item'] = $preservedata;
+        
     if ($this->form_validation->run() === FALSE)
     {
         $this->load->view('templates/header', $data);
@@ -54,8 +52,21 @@ public function create()
     }
     else
     {
-        $this->news_model->set_news();
-        $this->load->view('message/success');
+        $this->news_model->set_message();
+        $data['message'] = $this->message_model->get_message();
+        $emptymessage = array(
+        'msg_id' => '',
+        'msg_subject' => '',
+        'msg_recipient' => '',
+        'msg_sender' => '',
+        'msg_msg' => ''
+        );
+                 
+        $data['message_item'] = $emptymessage;
+        
+        $this->load->view('templates/header', $data);
+        $this->load->view('message/index');
+        $this->load->view('templates/footer');
     }
 }
 

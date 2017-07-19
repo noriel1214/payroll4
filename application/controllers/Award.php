@@ -5,17 +5,24 @@ class Award extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('award_model');
+                $this->load->model('employee_model');
                 $this->load->helper('url_helper');
         }
 
-public function index()
+public function index($award_id=0)
 {
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+    
         $data['award'] = $this->award_model->get_award();
+        $data['award_item']=$this->award_model->get_award($award_id);
+        $data['employee'] = $this->employee_model->get_employee();
         $data['title'] = 'Add Award';
 
         $this->load->view('templates/header', $data);
         $this->load->view('award/index', $data);
         $this->load->view('templates/footer');
+        
 }
        
 public function create()

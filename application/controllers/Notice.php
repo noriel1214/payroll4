@@ -8,32 +8,18 @@ class Notice extends CI_Controller {
                 $this->load->helper('url_helper');
         }
 
-public function index()
+public function index($notice_id=0)
 {
-        //$data['employee'] = $this->news_model->get_news();
-        $data['title'] = 'Add notice';
+    $this->load->helper('form');
+    $this->load->library('form_validation');    
+        $data['notice'] = $this->notice_model->get_notice();
+        $data['notice_item'] = $this->notice_model->get_notice($notice_id);
+        $data['title'] = 'Notice List';
 
         $this->load->view('templates/header', $data);
         $this->load->view('notice/index', $data);
         $this->load->view('templates/footer');
 }
-        
-        public function view($slug = NULL)
-{
-        $data['notice_item'] = $this->news_model->get_news($slug);
-
-        if (empty($data['notice_item']))
-        {
-                show_404();
-        }
-
-        $data['title'] = $data['notice_item']['title'];
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('notice/view', $data);
-        $this->load->view('templates/footer');
-}
-
 
 public function create()
 {

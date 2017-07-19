@@ -31,34 +31,114 @@
               <div class="title_right">
 
 
-                       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add New Award</button>
+                       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".pr-expense-modal">Add New Expense</button>
  
                        
                                          <!-- Large modal -->
            
 
-                  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                 <div class="modal fade pr-expense-modal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
 
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Add Award</h4>
+                          <h4 class="modal-title" id="myModalLabel">Add Expense</h4>
                         </div>
                         <div class="modal-body">
-                          <h4>Text in a modal</h4>
-                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+ <div class="x_panel">
+    
+                  <div class="x_content">
+
+        <?php echo validation_errors(); ?>
+            
+            <?php echo form_open('expense/create'); ?>
+                      
+                    <div class="form-horizontal form-label-left">
+
+                        
+                        <input id="expense_id" name="expense_id" type="hidden" value="<?php echo $expense_item['expense_id'] ?>">
+                               
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Expense Title</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="expense_title" name="expense_title" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')"  value="<?php echo $expense_item['expense_title'] ?>">
+                        </div>
+                      </div>
+                        
+                                              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="gift" name="expense_desc" type="expense_desc" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')" value="<?php echo $expense_item['expense_desc'] ?>">
+                        </div>
+                      </div>
+                        
+                                             <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Amount</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="expense_amt" name="expense_amt" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')" value="<?php echo $expense_item['expense_amt'] ?>">
+                        </div>
+                      </div>                        
+                        
+                        
+                    
+                        
+                                              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date</label>
+                        
+                                        <div class='col-sm-4'>
+                   
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker2'>
+                            <input id="expense_date" name="expense_date" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')" value="<?php echo $expense_item['expense_date'] ?>" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                        
+             
+                      </div>    
+                        
+                        
+
+
+
+
+
+
+                     
+                     <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                          <button type="submit" class="btn btn-success">Submit</button>
+       
+                            
+                            
+                        </div>
+                      </div>                      
+                      
+                    </div>
+                       
+                  </div>
+            
+            
+                </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                       
                         </div>
 
                       </div>
                     </div>
                   </div>
+              </div>
                   
 
               </div>                    
@@ -75,7 +155,7 @@
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
                             <th class="column-title">Id </th>
-                            <th class="column-title">Award Name </th>
+                            <th class="column-title">Expense Title </th>
                             <th class="column-title">Gift </th>
                             <th class="column-title">Amount </th>
                             <th class="column-title">Awarded Employee </th>

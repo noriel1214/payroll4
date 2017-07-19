@@ -3,62 +3,123 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Private Messaging</h3>
+                <h3><?php echo $title ?></h3>
               </div>
-
-
-                
             </div>
-
             <div class="clearfix"></div>
-
             <div class="row">
- 
-
-
-        
-
-        
-
-      
-
-
               <div class="clearfix"></div>
-
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-
               <div class="title_right">
-
-
-                       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add New Award</button>
- 
-                       
-                                         <!-- Large modal -->
-           
-
-                  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".pr-message-modal">Add New Message</button>
+                <div class="modal fade pr-message-modal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
 
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Add Award</h4>
+                          <h4 class="modal-title" id="myModalLabel">Write New Message </h4>
                         </div>
                         <div class="modal-body">
-                          <h4>Text in a modal</h4>
-                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+ <div class="x_panel">
+    
+                  <div class="x_content">
+
+        <?php echo validation_errors(); ?>
+            
+            <?php echo form_open('message/create'); ?>
+                      
+                    <div class="form-horizontal form-label-left">
+
+                        
+                        <input id="message_id" name="message_id" type="hidden" value="<?php echo $message_item['message_id'] ?>">
+                               
+
+                   <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Recipient</label>
+                        
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <select id="message_status" name="message_status" class="form-control">
+                              <?php foreach($employee as $employee_item): ?>
+                             <option value="<?php echo $employee_item['emp_id']?>" ><?php echo $employee_item['firstname'] ?></option> 
+                             <?php endforeach; ?>
+                          </select>
+                        </div>
+                      </div> 
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Subject</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="msg_subject" name="msg_subject" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')"  value="<?php echo $message_item['msg_subject'] ?>">
+                        </div>
+                      </div>
+                        
+                                              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Message</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <textarea id="msg_msg" name="msg_msg" rows="10" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+                                    oninput="setCustomValidity('')" value="<?php echo $message_item['msg_msg'] ?>" placeholder="Write Your Message"></textarea>
+                        </div>
+                      </div>
+                        
+                        
+                       
+                        
+                                              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date</label>
+                        
+                                        <div class='col-sm-4'>
+                   
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker2'>
+                            <input id="message_date" name="message_date" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')" value="<?php echo $message_item['message_date'] ?>" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                        
+             
+                      </div>    
+                        
+                        
+
+
+
+
+
+
+                     
+                     <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                          <button type="submit" class="btn btn-success">Submit</button>
+       
+                            
+                            
+                        </div>
+                      </div>                      
+                      
+                    </div>
+                       
+                  </div>
+            
+            
+                </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                       
                         </div>
 
                       </div>
                     </div>
                   </div>
+              </div>
                   
 
               </div>                    

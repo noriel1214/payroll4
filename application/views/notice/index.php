@@ -3,24 +3,15 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Notice List</h3>
+                <h3><?php echo $title ?></h3>
               </div>
-
-
-                
+ 
             </div>
 
             <div class="clearfix"></div>
 
             <div class="row">
  
-
-
-        
-
-        
-
-      
 
 
               <div class="clearfix"></div>
@@ -31,34 +22,115 @@
               <div class="title_right">
 
 
-                       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add New Award</button>
+                       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".pr-notice-modal">Add New Notice</button>
  
                        
                                          <!-- Large modal -->
            
 
-                  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                 <div class="modal fade pr-notice-modal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
 
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Add Award</h4>
+                          <h4 class="modal-title" id="myModalLabel">Add Notice</h4>
                         </div>
                         <div class="modal-body">
-                          <h4>Text in a modal</h4>
-                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+ <div class="x_panel">
+    
+                  <div class="x_content">
+
+        <?php echo validation_errors(); ?>
+            
+            <?php echo form_open('notice/create'); ?>
+                      
+                    <div class="form-horizontal form-label-left">
+
+                        
+                        <input id="notice_id" name="notice_id" type="hidden" value="<?php echo $notice_item['notice_id'] ?>">
+                               
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Notice Title</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="notice_title" name="notice_title" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')"  value="<?php echo $notice_item['notice_title'] ?>">
+                        </div>
+                      </div>
+                        
+                                              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input id="notice_desc" name="notice_desc" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')" value="<?php echo $notice_item['notice_desc'] ?>">
+                        </div>
+                      </div>
+                        
+                        
+                   <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Employee</label>
+                        
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <select id="notice_status" name="notice_status" class="form-control">
+                             <option value="0" >Active</option> 
+                             <option value="1" >Inactive</option> 
+                          </select>
+                        </div>
+                      </div>                        
+                        
+                                              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date</label>
+                        
+                                        <div class='col-sm-4'>
+                   
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker2'>
+                            <input id="notice_date" name="notice_date" type="text" class="form-control" required oninvalid="this.setCustomValidity('This field is required')"
+ oninput="setCustomValidity('')" value="<?php echo $notice_item['notice_date'] ?>" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                        
+             
+                      </div>    
+                        
+                        
+
+
+
+
+
+
+                     
+                     <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                          <button type="submit" class="btn btn-success">Submit</button>
+       
+                            
+                            
+                        </div>
+                      </div>                      
+                      
+                    </div>
+                       
+                  </div>
+            
+            
+                </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                       
                         </div>
 
                       </div>
                     </div>
                   </div>
+              </div>
                   
 
               </div>                    
@@ -75,10 +147,10 @@
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
                             <th class="column-title">Id </th>
-                            <th class="column-title">Award Name </th>
+                            <th class="column-title">Notice Title </th>
                             <th class="column-title">Gift </th>
                             <th class="column-title">Amount </th>
-                            <th class="column-title">Awarded Employee </th>
+                            <th class="column-title">Noticed Employee </th>
                             <th class="column-title">Date </th>
                             <th class="column-title no-link last"><span class="nobr">Options</span>
                             </th>

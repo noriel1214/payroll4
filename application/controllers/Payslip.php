@@ -40,13 +40,11 @@ public function create1()
 {
     $this->load->helper('form');
     $this->load->library('form_validation');
-
-    
+ 
         //$deduction_type = $this->input->post('deduction_type');
         //$deduction_amount = $this->input->post('deduction_amount');
          
         //$deduction_count=count($deduction_type);
-        
         
     $data['title'] = 'Add a New payslip';
 

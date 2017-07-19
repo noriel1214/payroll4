@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2017 at 11:43 PM
+-- Generation Time: Jul 19, 2017 at 06:12 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -381,6 +381,20 @@ INSERT INTO `pr_leave_status` (`leave_status_id`, `leave_status_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pr_message`
+--
+
+CREATE TABLE `pr_message` (
+  `msg_id` int(11) NOT NULL,
+  `msg_recipient` varchar(200) NOT NULL,
+  `msg_msg` varchar(500) NOT NULL,
+  `msg_sender` int(11) NOT NULL,
+  `msg_subject` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pr_notice`
 --
 
@@ -388,7 +402,8 @@ CREATE TABLE `pr_notice` (
   `notice_id` int(11) NOT NULL,
   `notice_date` date NOT NULL,
   `notice_title` varchar(100) NOT NULL,
-  `notice_status` int(11) NOT NULL
+  `notice_status` int(11) NOT NULL,
+  `notice_desc` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -445,6 +460,22 @@ INSERT INTO `pr_payslip_status` (`payslip_status_id`, `payslip_status_name`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pr_settings`
+--
+
+CREATE TABLE `pr_settings` (
+  `system_name` varchar(200) NOT NULL,
+  `system_title` varchar(200) NOT NULL,
+  `system_addr` varchar(200) NOT NULL,
+  `system_phone` varchar(20) NOT NULL,
+  `system_email` varchar(200) NOT NULL,
+  `system_lang` varchar(100) NOT NULL,
+  `system_logo` blob NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pr_status`
 --
 
@@ -463,23 +494,13 @@ INSERT INTO `pr_status` (`status_id`, `status_name`) VALUES
 (3, 'Interview'),
 (4, 'Offered'),
 (5, 'Hired'),
+(6, 'Declined'),
+(1, 'Applied'),
+(2, 'On Review'),
+(3, 'Interview'),
+(4, 'Offered'),
+(5, 'Hired'),
 (6, 'Declined');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pr_system`
---
-
-CREATE TABLE `pr_system` (
-  `system_name` varchar(200) NOT NULL,
-  `system_title` varchar(200) NOT NULL,
-  `system_addr` varchar(200) NOT NULL,
-  `system_phone` varchar(20) NOT NULL,
-  `system_email` varchar(200) NOT NULL,
-  `system_lang` varchar(100) NOT NULL,
-  `system_logo` blob NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -663,6 +684,12 @@ ALTER TABLE `pr_leave_status`
   ADD PRIMARY KEY (`leave_status_id`);
 
 --
+-- Indexes for table `pr_message`
+--
+ALTER TABLE `pr_message`
+  ADD PRIMARY KEY (`msg_id`);
+
+--
 -- Indexes for table `pr_notice`
 --
 ALTER TABLE `pr_notice`
@@ -758,6 +785,11 @@ ALTER TABLE `pr_leave`
 --
 ALTER TABLE `pr_leave_status`
   MODIFY `leave_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `pr_message`
+--
+ALTER TABLE `pr_message`
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pr_notice`
 --
